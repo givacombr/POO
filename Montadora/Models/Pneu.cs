@@ -2,9 +2,9 @@
 {
     public class Pneu
     {
-        public string Cor { get; set; }
+        public string? Cor { get; set; }
         public int Aro { get; set; }
-        public string Tipo { get; set; }
+        public string? Tipo { get; set; }
         public bool TWI { get; set; }
         public int PercentualBorracha { get; set; }
         public bool Estourado { get; set; }
