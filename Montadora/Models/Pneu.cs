@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    public class Pneu
+    public class Pneu//atributo
     {
         public string? Cor { get; set; }
         public int Aro { get; set; }
@@ -12,7 +12,20 @@
         public int VelocidadeAtual { get; set; }
         public bool Estepe { get; set; }
 
-        public void Girar(int _velocidade)
+        public Pneu(int _aro, int _velocidadeMaxina, string _tipo, bool _estepe)
+        {
+            Aro = _aro;
+            Tipo = _tipo;
+            VelocidadeMaxima = _velocidadeMaxina;
+            Estepe = _estepe;
+            VelocidadeAtual= 0;
+            Estourado = false;
+            TWI = false;
+            Cor = "Preto";
+            PercentualBorracha = 100;
+        }
+
+        public void Girar(int _velocidade)//metodo
         {
             VelocidadeAtual = VelocidadeAtual + _velocidade;
             PercentualBorracha = PercentualBorracha - 3;
@@ -42,6 +55,19 @@
             {
                 VelocidadeAtual = 0;
             }
+        }
+
+        public void Exibir()
+        {
+            Console.WriteLine("Aro: " + Aro);
+            Console.WriteLine("Percentual Borracha: " + PercentualBorracha);
+            Console.WriteLine("Cor: " + Cor);
+            Console.WriteLine("Velocidade Maxima: " + VelocidadeMaxima);
+            Console.WriteLine("Estepe: " + Estepe);
+            Console.WriteLine("Estourado: " + Estourado);
+            Console.WriteLine("Tipo: " + Tipo);
+            Console.WriteLine("TWI: " + TWI);
+            Console.WriteLine("Velocidade Atual: " + VelocidadeAtual);
         }
     }
 }
