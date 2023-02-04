@@ -12,7 +12,7 @@
         public int VelocidadeAtual { get; set; }
         public bool Estepe { get; set; }
 
-        public Pneu(int _aro, int _velocidadeMaxina, string _tipo, bool _estepe)
+        public Pneu(int _aro, int _velocidadeMaxina, string _tipo, bool _estepe = false)
         {
             Aro = _aro;
             Tipo = _tipo;
