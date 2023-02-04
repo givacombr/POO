@@ -23,7 +23,7 @@
 
 
 
-        public Carro(string _marca, string? cor, string? tipo, string? combustivel, int quantidadeRodas, int _ano, int odometro, int _velocidadeMaxima, string placa, string? _modelo, bool ligado)
+        public Carro(string _marca, string cor, string? tipo, string? combustivel, int quantidadeRodas, int _ano, int odometro, int _velocidadeMaxima, string placa, string? _modelo, bool ligado)
         {
             Marca = _marca;
             Modelo = _modelo;
