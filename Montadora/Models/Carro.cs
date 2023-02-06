@@ -23,26 +23,28 @@
 
 
 
-        public Carro(string _marca, string cor, string? tipo, string? combustivel, int quantidadeRodas, int _ano, int odometro, int _velocidadeMaxima, string placa, string? _modelo, bool ligado)
+        public Carro(string _marca, string _cor, string? _tipo, int _quantidadeRodas, int _ano, int _velocidadeMaxima, string _placa, string? _modelo)
         {
             Marca = _marca;
-            Modelo = _modelo;
+            Cor = _cor;
+            Tipo = _tipo;
+            QuantidadeRodas = _quantidadeRodas;
             Ano = _ano;
             VelocidadeMaxima = _velocidadeMaxima;
+            Placa = _placa;
+            Modelo = _modelo;
+
             VelocidadeAtual = 0;
             Odometro = 0;
             Ligado = false;
             PercentualCombustivel = 0;
+
             PneuDianteiroDireito = new Pneu(16, 150, "Carro de passeio");
             PneuDianteiroEsquerdo = new Pneu(16, 150, "Carro de passeio");
             PneuTraseiroDireito = new Pneu(16, 150, "Carro de passeio");
             PneuTraseiroEsquerdo = new Pneu(16, 150, "Carro de passeio");
             PneuEstepe = new Pneu(16, 70, "Estepe", true);
 
-            Cor = cor;
-            Tipo = tipo;
-            QuantidadeRodas = quantidadeRodas;
-            Placa = placa;
         }
 
         public void Ligar()
