@@ -54,7 +54,7 @@
                 Ligado = true;
 
             }
-            
+
         }
 
         public void Desligar()
@@ -66,16 +66,48 @@
             PneuTraseiroDireito.VelocidadeAtual = 0;
             PneuTraseiroEsquerdo.VelocidadeAtual = 0;
         }
-        public void Acelerar()
+        public void Acelerar(int _impulso)
         {
+            if (Ligado == true && _impulso > 0)
+            {
+
+                PneuDianteiroDireito.VelocidadeAtual = //todas irão receber o valor da última linha
+                PneuDianteiroEsquerdo.VelocidadeAtual = //
+                PneuTraseiroDireito.VelocidadeAtual = //
+                PneuTraseiroEsquerdo.VelocidadeAtual = //
+                VelocidadeAtual += _impulso;// VelocidadeAtual = VelocidadeAtual + _impulso; 
+
+            }
+        }
+        public void Frear(int _reduzir)
+        {
+            VelocidadeAtual = VelocidadeAtual - _reduzir;
+
+            if (VelocidadeAtual < 0)
+                VelocidadeAtual = 0;
 
         }
-        public void Frear() 
+        /// <summary>
+        /// Este método vai abastecer o carro.
+        /// </summary>
+        /// <param name="_quantidadeCombustivel">Informe o percentual de combustível 
+        /// que deseja abastecer, caso informe 0 o método irá completar o tanque.
+        /// O valor não pode ser superior a 100</param>
+        public void Abastecer(int _quantidadeCombustivel = 0)
         {
+            if (_quantidadeCombustivel == 0)
+                _quantidadeCombustivel = 100 - PercentualCombustivel;
+            {
 
-        }
-        public void Abastecer()
-        {
+            }
+            if (PercentualCombustivel + _quantidadeCombustivel > 100)
+            {
+                Console.WriteLine("A quantidade de combustível ultrapassa o limite do tanque:");
+                return;
+            }
+
+            if (PercentualCombustivel < 100)
+                PercentualCombustivel = PercentualCombustivel + _quantidadeCombustivel;
 
         }
 
