@@ -18,7 +18,8 @@
             Tipo = _tipo;
             VelocidadeMaxima = _velocidadeMaxina;
             Estepe = _estepe;
-            VelocidadeAtual= 0;
+
+            VelocidadeAtual = 0;
             Estourado = false;
             TWI = false;
             Cor = "Preto";
@@ -38,8 +39,8 @@
 
         public void EstourarPneu()
         {
-                Estourado = true;
-                VelocidadeAtual = 0;
+            Estourado = true;
+            VelocidadeAtual = 0;
         }
         public void Frear(int _reducao)
         {
@@ -47,14 +48,10 @@
             PercentualBorracha = PercentualBorracha - 5;
 
             if (PercentualBorracha <= 30)
-            {
                 EstourarPneu();
-            }
 
             if (VelocidadeAtual < 0)
-            {
                 VelocidadeAtual = 0;
-            }
         }
 
         public void Exibir()

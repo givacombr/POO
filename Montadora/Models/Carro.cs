@@ -51,7 +51,13 @@
         {
             if (PercentualCombustivel > 0)
             {
+                PercentualCombustivel = PercentualCombustivel - 3;
                 Ligado = true;
+                if (PercentualCombustivel <= 0)
+                {
+                    PercentualCombustivel = 0;
+                    Desligar();
+                }
 
             }
 
@@ -60,31 +66,56 @@
         public void Desligar()
         {
             Ligado = false;
-            VelocidadeAtual = 0;
-            PneuDianteiroDireito.VelocidadeAtual = 0;
-            PneuDianteiroEsquerdo.VelocidadeAtual = 0;
-            PneuTraseiroDireito.VelocidadeAtual = 0;
-            PneuTraseiroEsquerdo.VelocidadeAtual = 0;
+            Parar();
         }
         public void Acelerar(int _impulso)
         {
             if (Ligado == true && _impulso > 0)
             {
+                Odometro += 18; 
+                PercentualCombustivel = PercentualCombustivel - 8;
 
-                PneuDianteiroDireito.VelocidadeAtual = //todas irão receber o valor da última linha
-                PneuDianteiroEsquerdo.VelocidadeAtual = //
-                PneuTraseiroDireito.VelocidadeAtual = //
-                PneuTraseiroEsquerdo.VelocidadeAtual = //
-                VelocidadeAtual += _impulso;// VelocidadeAtual = VelocidadeAtual + _impulso; 
+                if(PercentualCombustivel <= 0)
+                {
+                    PercentualCombustivel = 0;
+                    Desligar();
+                    return;
+                }
+
+                VelocidadeAtual = VelocidadeAtual + _impulso; // VelocidadeAtual = VelocidadeAtual + _impulso; 
+                PneuDianteiroDireito.Girar(_impulso);
+                PneuDianteiroEsquerdo.Girar(_impulso);
+                PneuTraseiroDireito.Girar(_impulso);
+                PneuTraseiroEsquerdo.Girar(_impulso);
+                if (PneuDianteiroDireito.Estourado || PneuDianteiroEsquerdo.Estourado || PneuTraseiroDireito.Estourado || PneuTraseiroEsquerdo.Estourado)
+                {
+                    Parar();
+                }
 
             }
         }
+
+        private void Parar()
+        {
+            VelocidadeAtual = 0;
+            PneuDianteiroDireito.VelocidadeAtual = 0;
+            PneuDianteiroEsquerdo.VelocidadeAtual = 0;
+            PneuTraseiroDireito.VelocidadeAtual = 0;
+            PneuTraseiroEsquerdo.VelocidadeAtual = 0;
+
+        }
+
         public void Frear(int _reduzir)
         {
             VelocidadeAtual = VelocidadeAtual - _reduzir;
 
             if (VelocidadeAtual < 0)
                 VelocidadeAtual = 0;
+
+            PneuDianteiroDireito.Frear(_reduzir);
+            PneuDianteiroEsquerdo.Frear(_reduzir);
+            PneuTraseiroDireito.Frear(_reduzir);
+            PneuTraseiroEsquerdo.Frear(_reduzir);
 
         }
         /// <summary>
@@ -110,7 +141,33 @@
                 PercentualCombustivel = PercentualCombustivel + _quantidadeCombustivel;
 
         }
+        public void Exibir()
+        {
+            Console.Clear();
 
+            Console.WriteLine("Marca: " + Marca);
+            Console.WriteLine("Cor: " + Cor);
+            Console.WriteLine("Tipo: " + Tipo);
+            Console.WriteLine("Combustivel: " + Combustivel);
+            Console.WriteLine("Quantidade de Rodas: " + QuantidadeRodas);
+            Console.WriteLine("Ano: " + Ano);
+            Console.WriteLine("Odometro: " + Odometro);
+            Console.WriteLine("Velocidade Máxima: " + VelocidadeMaxima);
+            Console.WriteLine("Velocidade Atual: " + VelocidadeAtual);
+            Console.WriteLine("Placa: " + Placa);
+            Console.WriteLine("Modelo: " + Modelo);
+            Console.WriteLine("Ligado: " + Ligado);
+            Console.WriteLine("PercentualCombustivel: " + PercentualCombustivel);
 
+            Console.WriteLine("\nPneuDianteiroEsquerdo");
+            PneuDianteiroEsquerdo.Exibir();
+            Console.WriteLine("\nPneuDianteiroDireito");
+            PneuDianteiroDireito.Exibir();
+            Console.WriteLine("\nPneuTraseiroEsquerdo");
+            PneuTraseiroEsquerdo.Exibir();
+            Console.WriteLine("\nPneuTraseiroDireito");
+            PneuTraseiroDireito.Exibir();
+
+        }
     }
 }
