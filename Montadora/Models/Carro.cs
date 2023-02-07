@@ -51,7 +51,7 @@
         {
             if (PercentualCombustivel > 0)
             {
-                PercentualCombustivel = PercentualCombustivel - 3;
+                PercentualCombustivel = PercentualCombustivel - 3;//ou é a mesma coisa PercentualCombustivel -= 3; 
                 Ligado = true;
                 if (PercentualCombustivel <= 0)
                 {
@@ -70,12 +70,12 @@
         }
         public void Acelerar(int _impulso)
         {
-            if (Ligado == true && _impulso > 0)
+            if (Ligado == true && _impulso > 0)//(Ligado && _impulso > 0) a mesma coisa
             {
-                Odometro += 18; 
+                Odometro += 18;
                 PercentualCombustivel = PercentualCombustivel - 8;
 
-                if(PercentualCombustivel <= 0)
+                if (PercentualCombustivel <= 0)
                 {
                     PercentualCombustivel = 0;
                     Desligar();
@@ -107,7 +107,7 @@
 
         public void Frear(int _reduzir)
         {
-            VelocidadeAtual = VelocidadeAtual - _reduzir;
+            VelocidadeAtual = VelocidadeAtual - _reduzir;// VelocidadeAtual -= _reduzir; a mesma coisa
 
             if (VelocidadeAtual < 0)
                 VelocidadeAtual = 0;
@@ -137,8 +137,9 @@
                 return;
             }
 
-            if (PercentualCombustivel < 100)
-                PercentualCombustivel = PercentualCombustivel + _quantidadeCombustivel;
+            //if (PercentualCombustivel < 100)
+            //PercentualCombustivel = PercentualCombustivel + _quantidadeCombustivel;
+            PercentualCombustivel += _quantidadeCombustivel;
 
         }
         public void Exibir()

@@ -32,9 +32,7 @@
             PercentualBorracha = PercentualBorracha - 3;
 
             if (VelocidadeAtual > VelocidadeMaxima || PercentualBorracha <= 30)
-            {
                 EstourarPneu();
-            }
         }
 
         public void EstourarPneu()
